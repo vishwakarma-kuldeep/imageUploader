@@ -11,7 +11,7 @@ router.post("/upload", async (req, res) => {
          "==================================== req.files  ================================"
        );
         
-      console.log(req.files)
+    //   console.log(req.files)
     if (files && files.length > 0) {
       const originalUrl = req.originalUrl.toString().split("/")[1];
       if (req.files) {
@@ -28,8 +28,8 @@ router.post("/upload", async (req, res) => {
             }
           });
         });
-        console.log("==================================== Files Data ================================")
-        console.log(filesData);
+        // console.log("==================================== Files Data ================================")
+        // console.log(filesData);
         }
     //     const result = await Promise.all(uploadUrl);
         
@@ -38,7 +38,6 @@ router.post("/upload", async (req, res) => {
        console.log(
          "==================================== Files URL ================================"
        );
-        
       console.log(fileUrls);
     return res.status(200).json("File Uploaded Successfully");
   } catch (error) {
