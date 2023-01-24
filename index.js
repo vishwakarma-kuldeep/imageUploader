@@ -26,12 +26,16 @@ const port = NormalizePort(PORT);
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
-    extended: true,
+      extended: true,
+      limit: "500mb",
   })
 );
 
 // Enable CORS
-app.use(cors());
+app.use(cors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+}));
 app.use(multer().any());
 
 // Set development server
