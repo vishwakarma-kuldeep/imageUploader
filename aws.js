@@ -76,15 +76,13 @@ exports.uploadFile = async (file, originalUrl, userId) => {
          console.log(
            "==================================== Complete AWS ================================"
          );
-        
-    const fileName =
-      `${originalUrl}/${userId}/` + file.originalname.replace(/ /g, "-");
     const params = {
       Bucket: AWS_BUCKET_NAME,
-      Key: fileName,
+      Key: `${originalUrl}/${userId}/` + file.originalname.replace(/ /g, "-"),
       Body: file.buffer,
       ACL: "public-read",
-    };
+        };
+        console.log(params)
         const fileUrl = await S3.upload(params).promise();
          console.log(
            "==================================== Files URL at AWS ================================"

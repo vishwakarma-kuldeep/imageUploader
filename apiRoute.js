@@ -24,7 +24,7 @@ router.post("/upload", async (req, res) => {
                 if (!filesData.includes(file)) {
                   filesData.push(file);
                 }
-              }
+              } 
             }
           });
         });
