@@ -200,10 +200,18 @@ app.post("/upload", async (req, res) => {
     // console.log(extension);
     if (req.files) {
       const files = req.files;
+      let job;
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
+        job = cron.schedule("* */1 * * * *", async () => {
         const result = await upload.uploadFile(file, req.url.split("/")[1]);
-        urls.push(result);
+          urls.push(result);
+          if (urls.length === files.length) {
+            job.stop();
+            return res.status(200).send(urls);
+          }
+        });
+        
       }
     }
     return res.status(200).send(urls);
