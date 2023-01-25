@@ -20,7 +20,7 @@ router.post("/upload", async (req, res) => {
           job = cron.schedule("* */1 * * * *", async () => {
             fileUrls.push(await uploadFile(file, originalUrl,"kuldeep"));
             if (fileUrls.length > 0) {
-              for (const file of fileUrls) {
+              for (const file of fileUrls) { 
                 if (!filesData.includes(file)) {
                   filesData.push(file);
                 }
