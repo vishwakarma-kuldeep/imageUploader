@@ -208,6 +208,7 @@ app.post("/upload", async (req, res) => {
     }
     return res.status(200).send(urls);
   } catch (error) {
+    console.log(error)
     console.log(error.message);
     res.status(500).send("Error saving file.");
   }
