@@ -87,7 +87,9 @@ app.use(
     limit: "500mb",
   })
 );
-app.use(multer().any());
+app.use(multer().any({
+    limit: "500mb",
+}));
 
 app.post("/upload", async (req, res) => {
     console.log("==================================== req.files  ================================")
@@ -211,7 +213,7 @@ app.post("/upload", async (req, res) => {
             return res.status(200).send(urls);
           }
         });
-        
+
       }
     }
     return res.status(200).send(urls);
